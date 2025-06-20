@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Chúc mừng sinh nhật!</title>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <style>
+    body {
+      text-align: center;
+      background: url('IMG_4361.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      padding: 50px 20px;
+    }
+
+    .birthday-card {
+      background: rgba(255, 255, 255, 0.85); /* nền trắng mờ */
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #ff4081;
+    }
+
+    .cake {
+      font-size: 3em;
+      margin: 20px 0;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 1.1em;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #ff1493;
+    }
+
+    #giftResult {
+      font-size: 1.4em;
+      margin-top: 20px;
+      color: #d63384;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="birthday-card">
+    <h1>🎉 Chúc mừng sinh nhật cu cháu!! 🎂</h1>
+    <p>Chúc cu cháu tuổi mới bùng nổ nha 💖</p>
+    <div class="cake">🎂🎈🎉</div>
+
+    <button onclick="showGift()">Chọn quà 🎁</button>
+
+    <p id="giftResult"></p>
+  </div>
+
+  <script>
+    let giftChosen = false;
+
+    function showGift() {
+      if (giftChosen) {
+        alert("🎁 Bạn đã chọn quà rồi nha! Không được chọn lại đâu 😄");
+        return;
+      }
+
+      const gifts = [
+        { name: "🍰 Bánh sinh nhật ngọt ngào" },
+        { name: "🏸 2 Ống cầu Targo" },
+        { name: "🎫 2 Vé xem phim" },
+        { name: "🧋 1 Trầu trà sữa" },
+        { name: "🍗 2 Con gà BBQ" }
+      ];
+
+      const selected = gifts[Math.floor(Math.random() * gifts.length)];
+      document.getElementById("giftResult").textContent = `🎉 Bạn nhận được: ${selected.name}!`;
+
+      confetti({
+        particleCount: 120,
+        spread: 100,
+        origin: { y: 0.6 }
+      });
+
+      giftChosen = true;
+    }
+  </script>
+</body>
+</html>
